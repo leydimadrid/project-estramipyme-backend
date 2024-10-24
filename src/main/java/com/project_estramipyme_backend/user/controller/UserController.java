@@ -35,7 +35,7 @@ public class UserController {
         return this.userService.getById(id);
     }
 
-    @PutMapping(path = "/{id}") //Cambia todos los objetos si fuera una sola cosa sería Path
+    @PutMapping(path = "/{id}")
     public UserModel updateUserById(@RequestBody UserModel request, @PathVariable Long id) {
         return this.userService.updateById(request, id);
     }
