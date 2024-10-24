@@ -22,7 +22,7 @@ public class UserModel {
     private TypeUser typeUser;
     private String typeDocument;
     private String numberDocument;
-    private String companyName;
+    private String businessName;
     private String sector;
     private String otherSector;
     private String email;
