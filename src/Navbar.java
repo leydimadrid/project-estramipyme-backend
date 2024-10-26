@@ -5,7 +5,7 @@ public class Navbar {
     private List<NavbarSection> sections; //lista de secciones de navegación
 
     public Navbar(){
-        section = new ArrayList<>(); //constructor de la lista de secciones
+        sections = new ArrayList<>(); //constructor de la lista de secciones
     }
 
     /*-- Metodo que permite agregar una nueva seccion al menu--*/
