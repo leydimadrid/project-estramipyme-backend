@@ -12,11 +12,19 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table (name= "users")
+@Table(name = "users")
 public class UserModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
+    private String name;
+    private String lastname;
+    private TypeUser typeUser;
+    private String typeDocument;
+    private String numberDocument;
+    private String businessName;
+    private String sector;
+    private String otherSector;
     private String email;
     private String password;
 

@@ -22,7 +22,7 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
-                .csrf().disable()
+                .csrf().disable() // Desactivar CSRF para simplificar la configuración
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/auth/**").permitAll()  // Permitir acceso a las rutas de autenticación y registro sin autenticación
                         .anyRequest().authenticated()  // Proteger todas las demás rutas
