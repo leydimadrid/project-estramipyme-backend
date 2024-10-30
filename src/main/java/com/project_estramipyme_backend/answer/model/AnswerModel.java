@@ -1,60 +1,41 @@
 package com.project_estramipyme_backend.answer.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.project_estramipyme_backend.formPrincipal.FormularioModel;
+import com.project_estramipyme_backend.formPrincipal.OptionModel;
+import com.project_estramipyme_backend.formPrincipal.QuestionModel;
+import com.project_estramipyme_backend.user.model.UserModel;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
-
+@Table(name = "answer")
 public class AnswerModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long formId;
-    private Long questionId;
-    private Long optionId;
 
-    public AnswerModel() {
-    }
+    @ManyToOne
+    @JoinColumn(name = "question_id")
+    private QuestionModel question;
 
-    public AnswerModel(Long formId, Long questionId, Long optionId) {
-        this.formId = formId;
-        this.questionId = questionId;
-        this.optionId = optionId;
-    }
+    @ManyToOne
+    @JoinColumn(name = "form_id")
+    private FormularioModel formulario;
 
-    public Long getId() {
-        return id;
-    }
+    @ManyToOne
+    @JoinColumn(name = "option_id", nullable = true)
+    private OptionModel option;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getFormId() {
-        return formId;
-    }
-
-    public void setFormId(Long formId) {
-        this.formId = formId;
-    }
-
-    public Long getQuestionId() {
-        return questionId;
-    }
-
-    public void setQuestionId(Long questionId) {
-        this.questionId = questionId;
-    }
-
-    public Long getOptionId() {
-        return optionId;
-    }
-
-    public void setOptionId(Long optionId) {
-        this.optionId = optionId;
-    }
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = true)
+    private UserModel user;
 
 
 }
