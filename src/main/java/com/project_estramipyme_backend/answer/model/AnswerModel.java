@@ -1,8 +1,9 @@
 package com.project_estramipyme_backend.answer.model;
 
-import com.project_estramipyme_backend.formPrincipal.FormularioModel;
-import com.project_estramipyme_backend.formPrincipal.OptionModel;
-import com.project_estramipyme_backend.formPrincipal.QuestionModel;
+import com.project_estramipyme_backend.form.model.FormModel;
+import com.project_estramipyme_backend.form.model.Option;
+import com.project_estramipyme_backend.form.model.Question;
+import com.project_estramipyme_backend.form.model.Test;
 import com.project_estramipyme_backend.user.model.UserModel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -15,27 +16,19 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "answer")
+@Table(name = "answer_option")
 public class AnswerModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "question_id")
-    private QuestionModel question;
-
-    @ManyToOne
-    @JoinColumn(name = "form_id")
-    private FormularioModel formulario;
-
-    @ManyToOne
     @JoinColumn(name = "option_id", nullable = true)
-    private OptionModel option;
+    private Option option;
 
     @ManyToOne
-    @JoinColumn(name = "user_id", nullable = true)
-    private UserModel user;
+    @JoinColumn(name = "test_id", nullable = true)
+    private Test test;
 
 
 }

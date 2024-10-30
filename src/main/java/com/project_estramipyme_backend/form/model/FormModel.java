@@ -1,4 +1,4 @@
-package com.project_estramipyme_backend.formPrincipal;
+package com.project_estramipyme_backend.form.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -14,13 +14,15 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table(name = "form")
-public class FormularioModel {
+public class FormModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String name;
+    private String description;
 
-    @OneToMany(mappedBy = "formulario", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<SectionModel> sections;
+    @OneToMany(mappedBy = "form", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Question> questions;
 
 
 }

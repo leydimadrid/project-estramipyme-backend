@@ -1,4 +1,4 @@
-package com.project_estramipyme_backend.formPrincipal;
+package com.project_estramipyme_backend.form.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -14,16 +14,16 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Table(name = "question")
-public class QuestionModel {
+public class Question {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String statement;
 
     @ManyToOne
-    @JoinColumn(name = "section_id")
-    private SectionModel section;
+    @JoinColumn(name = "form_id")
+    private FormModel form;
 
     @OneToMany(mappedBy = "question", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<OptionModel> options;
+    private List<Option> options;
 }

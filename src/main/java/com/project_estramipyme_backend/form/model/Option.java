@@ -1,4 +1,4 @@
-package com.project_estramipyme_backend.formPrincipal;
+package com.project_estramipyme_backend.form.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -12,14 +12,15 @@ import lombok.Setter;
 @AllArgsConstructor
 @Entity
 @Table(name = "option")
-public class OptionModel {
+public class Option {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String text;
+    private int score;
 
     @ManyToOne
     @JoinColumn(name = "question_id")
-    private QuestionModel question;
+    private Question question;
 }
 

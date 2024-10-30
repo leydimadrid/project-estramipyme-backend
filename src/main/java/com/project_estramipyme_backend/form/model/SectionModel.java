@@ -1,4 +1,4 @@
-package com.project_estramipyme_backend.formPrincipal;
+package com.project_estramipyme_backend.form;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
