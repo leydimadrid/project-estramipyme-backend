@@ -39,20 +39,5 @@ public class AnswerController {
         return this.answerService.getAnswerById(id);
     }
 
-    @PutMapping(path = "/{id}")
-    public AnswerModel updateFormById(@RequestBody AnswerModel request, @PathVariable Long id) {
-        return this.answerService.updateById(request, id);
-    }
-
-    @DeleteMapping(path = "/{id}")
-    public String deleteById(@PathVariable("id") Long id) {
-        boolean isOk = this.answerService.deleteAnswer(id);
-
-        if (isOk) {
-            return "Form with id " + id + " delete!";
-        } else {
-            return "Error";
-        }
-    }
 }
 

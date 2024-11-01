@@ -32,24 +32,5 @@ public class AnswerService {
         return answerRepository.save(answerModel);
     }
 
-    public AnswerModel updateById(AnswerModel request, Long id) {
-        AnswerModel answer = answerRepository.findById(id).get();
-
-        answer.setTest(request.getTest());
-        answer.setOption(request.getOption());
-        answer.setOption(answer.getOption());
-        answerRepository.save(answer);
-
-        return answer;
-    }
-
-    public Boolean deleteAnswer(Long id) {
-        try {
-            answerRepository.deleteById(id);
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
-    }
 
 }
