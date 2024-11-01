@@ -24,7 +24,10 @@ public class UserModel implements UserDetails {
     private Long id;
     private String name;
     private String lastname;
+
+    @Enumerated(EnumType.STRING)
     private TypeUser typeUser;
+
     private String typeDocument;
     private String numberDocument;
     private String businessName;

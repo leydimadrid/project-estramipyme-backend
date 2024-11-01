@@ -2,6 +2,7 @@ package com.project_estramipyme_backend.answer.controller;
 
 import com.project_estramipyme_backend.answer.model.AnswerModel;
 import com.project_estramipyme_backend.answer.service.AnswerService;
+import com.project_estramipyme_backend.form.model.FormModel;
 import com.project_estramipyme_backend.user.model.UserModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,7 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/answers")
+@RequestMapping("/api/answers")
 public class AnswerController {
     private final AnswerService answerService;
 
@@ -38,4 +39,20 @@ public class AnswerController {
         return this.answerService.getAnswerById(id);
     }
 
+    @PutMapping(path = "/{id}")
+    public AnswerModel updateFormById(@RequestBody AnswerModel request, @PathVariable Long id) {
+        return this.answerService.updateById(request, id);
+    }
+
+    @DeleteMapping(path = "/{id}")
+    public String deleteById(@PathVariable("id") Long id) {
+        boolean isOk = this.answerService.deleteAnswer(id);
+
+        if (isOk) {
+            return "Form with id " + id + " delete!";
+        } else {
+            return "Error";
+        }
+    }
 }
+

@@ -1,5 +1,6 @@
-package com.project_estramipyme_backend.form.model;
+package com.project_estramipyme_backend.test.model;
 
+import com.project_estramipyme_backend.answer.model.AnswerModel;
 import com.project_estramipyme_backend.user.model.UserModel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -8,6 +9,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.List;
 
 
 @Getter
@@ -16,13 +19,16 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Entity
 @Table(name ="test")
-public class Test {
+public class TestModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private LocalDate date;
+    private LocalDateTime date;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
     private UserModel users;
+
+//    @OneToMany(mappedBy = "test")  // Define la relación con AnswerOption
+//    private List<AnswerModel> answers;
 }
