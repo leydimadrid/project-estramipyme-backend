@@ -22,10 +22,12 @@ public class Question_Option {
     private Long id;
     private int score;
 
+
     @ManyToOne
     @JoinColumn(name = "option_id", nullable = true)
     @JsonManagedReference //Le indica a Jackson que esa referencia es la "parte principal" de la relación
     private Option option;
+
 
     @ManyToOne
     @JoinColumn(name = "question_id", nullable = true)
