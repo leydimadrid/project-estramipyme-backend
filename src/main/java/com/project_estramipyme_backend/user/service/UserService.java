@@ -29,6 +29,14 @@ public class UserService {
     public UserModel updateById(UserModel request, Long id) {
         UserModel user = userRepository.findById(id).get();
 
+        user.setName(request.getName());
+        user.setLastname(request.getLastname());
+        user.setTypeUser(request.getTypeUser());
+        user.setTypeDocument(request.getTypeDocument());
+        user.setNumberDocument(request.getNumberDocument());
+        user.setBusinessName(request.getBusinessName());
+        user.setSector(request.getSector());
+        user.setOtherSector(request.getOtherSector());
         user.setEmail(request.getEmail());
         user.setPassword(request.getPassword());
         userRepository.save(user);
