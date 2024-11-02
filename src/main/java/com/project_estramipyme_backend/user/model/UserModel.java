@@ -36,46 +36,46 @@ public class UserModel implements UserDetails {
     @Column(unique = true)  // Asegura que el email sea único
     private String email;
 
-    private String password;  // Asegura que la contraseña esté oculta al serializar la entidad
+    private String password;
 
-
+   // @JsonIgnore
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         // Devuelve la lista de roles o permisos del usuario. Puedes retornar una lista vacía si no estás usando roles.
         return List.of();
     }
 
-    @JsonIgnore
+   // @JsonIgnore
     @Override
     public String getUsername() {
         return this.email;  // Usa el correo electrónico como nombre de usuario
     }
 
-    @JsonIgnore
+    //@JsonIgnore
     @Override
     public String getPassword() {
         return this.password;
     }
 
-    @JsonIgnore
+   // @JsonIgnore
     @Override
     public boolean isAccountNonExpired() {
         return true;  // Puedes agregar lógica para determinar si la cuenta está expirada
     }
 
-    @JsonIgnore
+   // @JsonIgnore
     @Override
     public boolean isAccountNonLocked() {
         return true;  // Puedes agregar lógica para determinar si la cuenta está bloqueada
     }
 
-    @JsonIgnore
+   // @JsonIgnore
     @Override
     public boolean isCredentialsNonExpired() {
         return true;  // Puedes agregar lógica para verificar si las credenciales han expirado
     }
 
-    @JsonIgnore
+   // @JsonIgnore
     @Override
     public boolean isEnabled() {
         return true;  // Puedes agregar lógica para determinar si el usuario está habilitado
