@@ -35,10 +35,10 @@ public class UserModel implements UserDetails {
     private String otherSector;
     @Column(unique = true)  // Asegura que el email sea único
     private String email;
-    @JsonIgnore
+
     private String password;  // Asegura que la contraseña esté oculta al serializar la entidad
 
-    @JsonIgnore
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         // Devuelve la lista de roles o permisos del usuario. Puedes retornar una lista vacía si no estás usando roles.
