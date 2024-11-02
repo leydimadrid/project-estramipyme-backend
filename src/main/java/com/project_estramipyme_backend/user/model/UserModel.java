@@ -36,7 +36,8 @@ public class UserModel implements UserDetails {
     @Column(unique = true)  // Asegura que el email sea único
     private String email;
 
-    private String password;  // Asegura que la contraseña esté oculta al serializar la entidad
+    private String password;
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -54,7 +55,6 @@ public class UserModel implements UserDetails {
     public String getPassword() {
         return this.password;
     }
-
 
     @Override
     public boolean isAccountNonExpired() {
