@@ -18,30 +18,8 @@ public class FormService {
         return (ArrayList<FormModel>) formRepository.findAll();
     }
 
-    public FormModel saveForm(FormModel form) {
-        return formRepository.save(form);
-    }
-
     public Optional<FormModel> getById(Long id) {
         return formRepository.findById(id);
     }
-    public FormModel updateById(FormModel request, Long id) {
-        FormModel form = formRepository.findById(id).get();
 
-        form.setName(request.getName());
-        form.setDescription(request.getDescription());
-        form.setQuestions(request.getQuestions());
-        formRepository.save(form);
-
-        return form;
-    }
-
-    public Boolean deleteForm(Long id) {
-        try {
-            formRepository.deleteById(id);
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
-    }
 }

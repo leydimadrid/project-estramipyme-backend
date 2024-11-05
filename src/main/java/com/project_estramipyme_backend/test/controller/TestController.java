@@ -36,21 +36,8 @@ public class TestController {
         return this.testService.getById(id);
     }
 
-    @PutMapping(path = "/{id}")
-    public TestModel updateTestById(@RequestBody TestModel request, @PathVariable Long id) {
-        return this.testService.updateById(request, id);
-    }
 
-    @DeleteMapping(path = "/{id}")
-    public String deleteById(@PathVariable("id") Long id) {
-        boolean isOk = this.testService.deleteTest(id);
 
-        if (isOk) {
-            return "Test with id " + id + " delete!";
-        } else {
-            return "Error";
-        }
-    }
 
 
 }

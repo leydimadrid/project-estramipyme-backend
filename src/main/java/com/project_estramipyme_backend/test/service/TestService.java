@@ -28,23 +28,5 @@ public class TestService {
         return testRepository.findById(id);
     }
 
-    public TestModel updateById(TestModel request, Long id) {
-        TestModel test = testRepository.findById(id).get();
-
-        test.setDate(request.getDate());
-        test.setUsers(request.getUsers());
-        testRepository.save(test);
-
-        return test;
-    }
-
-    public Boolean deleteTest(Long id) {
-        try {
-            testRepository.deleteById(id);
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
-    }
 
 }
