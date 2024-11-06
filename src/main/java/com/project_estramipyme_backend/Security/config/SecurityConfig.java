@@ -8,9 +8,11 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
@@ -21,15 +23,27 @@ public class SecurityConfig {
         this.jwtAuthFilter = jwtAuthFilter;
         this.userDetailsService = userDetailsService;
     }
+//    @Bean
+//    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+//        http
+//                .authorizeHttpRequests(auth -> auth
+//                        .anyRequest().permitAll()  // Permite todas las solicitudes HTTP sin restricciones
+//                )
+//                .csrf(csrf -> csrf.ignoringRequestMatchers("/**")); // Ignora CSRF solo para ciertas rutas
+//
+//        return http.build();
+//    }
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http
+        return http
+                .csrf(csrf -> csrf.disable()) // Revisa si realmente es necesario
                 .authorizeHttpRequests(auth -> auth
-                        .anyRequest().permitAll()  // Permite todas las solicitudes HTTP sin restricciones
+                        .requestMatchers("/api/auth/**").permitAll()  // Permitir acceso a las rutas de autenticación y registro sin autenticación
+                        .anyRequest().authenticated()  // Proteger todas las demás rutas
                 )
-                .csrf(csrf -> csrf.ignoringRequestMatchers("/**")); // Ignora CSRF solo para ciertas rutas
-
-        return http.build();
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
+                .build();
     }
 
     @Bean
