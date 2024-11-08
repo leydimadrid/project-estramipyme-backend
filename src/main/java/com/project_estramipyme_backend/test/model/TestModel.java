@@ -1,6 +1,8 @@
 package com.project_estramipyme_backend.test.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.project_estramipyme_backend.answer.model.AnswerModel;
+import com.project_estramipyme_backend.form.model.Question;
 import com.project_estramipyme_backend.user.model.UserModel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
