@@ -37,7 +37,7 @@ public class AuthController {
     public ResponseEntity<?> register(@RequestBody UserModel person) {
         person.setPassword(passwordEncoder.encode(person.getPassword()));  // Codifica la contraseña
         personService.saveUser(person);
-        return ResponseEntity.ok("Usuario registrado exitosamente");
+        return ResponseEntity.ok().body("{\"message\": \"Usuario registrado exitosamente\"}");
     }
 
     @PostMapping("/login")
