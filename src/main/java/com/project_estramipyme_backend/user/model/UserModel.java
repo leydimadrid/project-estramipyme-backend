@@ -28,10 +28,15 @@ public class UserModel implements UserDetails {
     @Enumerated(EnumType.STRING)
     private TypeUser typeUser;
 
-    private String typeDocument;
+    @Enumerated(EnumType.STRING)
+    private TypeDocument typeDocument;
+
     private String numberDocument;
     private String businessName;
-    private String sector;
+
+    @Enumerated(EnumType.STRING)
+    private Sector sector;
+
     private String otherSector;
     @Column(unique = true)  // Asegura que el email sea único
     private String email;
