@@ -4,6 +4,7 @@ import com.project_estramipyme_backend.Security.security.CustomUserDetailsServic
 import com.project_estramipyme_backend.Security.security.JwtAuthFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -38,8 +39,8 @@ public class SecurityConfig {
         return http
                 .csrf(csrf -> csrf.disable()) // Revisa si realmente es necesario
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/**").permitAll()  // Permitir acceso a las rutas de autenticación y registro sin autenticación
-                        .anyRequest().authenticated()  // Proteger todas las demás rutas
+                        .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()  // Permitir acceso a las rutas de autenticación y registro sin autenticación
+                        .anyRequest().permitAll()  // Proteger todas las demás rutas
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
