@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@Tag(name = "Tests", description = "API para gestión de tests de evaluación")
+@Tag(name = "Tests", description = "API for evaluation test management")
 @RestController
 @RequestMapping("/api/test")
 public class TestController {
@@ -35,18 +35,18 @@ public class TestController {
         this.testService = testService;
     } //Fin inyección de dependencias
 
-    @Operation(summary = "Obtener todos los tests",
-            description = "Retorna la lista de todos los tests realizados")
-    @ApiResponse(responseCode = "200", description = "Tests obtenidos exitosamente")
+    @Operation(summary = "Get all test",
+            description = "Return list of all tests performed")
+    @ApiResponse(responseCode = "200", description = "Successful tests")
     @GetMapping(path = "/getTest")
     public ArrayList<TestModel> getTest() {
         return this.testService.getTest();
     }
 
 
-    @Operation(summary = "Crear nuevo test",
-            description = "Registra un nuevo test en el sistema")
-    @ApiResponse(responseCode = "200", description = "Test creado exitosamente")
+    @Operation(summary = "Create new test",
+            description = "Register a new test in the system")
+    @ApiResponse(responseCode = "200", description = "Test successfully created")
     @PostMapping(path = "/newTest")
     public TestModel saveTest(@RequestBody TestRequestDTO test) {
 
@@ -70,14 +70,14 @@ public class TestController {
     }
 
 
-    @Operation(summary = "Obtener test por ID")
+    @Operation(summary = "Get test by ID")
     @ApiResponses({
-            @ApiResponse(responseCode = "200", description = "Test encontrado"),
-            @ApiResponse(responseCode = "404", description = "Test no encontrado")
+            @ApiResponse(responseCode = "200", description = "Test found"),
+            @ApiResponse(responseCode = "404", description = "Test not found")
     })
     @GetMapping(path = "/{id}")
     public Optional<TestModel> getUserById(
-            @Parameter(description = "ID del test") @PathVariable("id") Long id) {
+            @Parameter(description = "Test ID") @PathVariable("id") Long id) {
         return this.testService.getById(id);
     }
 }

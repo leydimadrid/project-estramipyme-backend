@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.Optional;
 
-@Tag(name = "Respuestas", description = "API para gestión de respuestas de evaluación")
+@Tag(name = "Answers", description = "API for evaluation response management")
 @RestController
 @RequestMapping("/api/answers")
 public class AnswerController {
@@ -24,32 +24,32 @@ public class AnswerController {
         this.answerService = answerService;
     }
 
-    @Operation(summary = "Obtener todas las respuestas",
-            description = "Retorna la lista completa de respuestas registradas")
-    @ApiResponse(responseCode = "200", description = "Respuestas obtenidas exitosamente")
+    @Operation(summary = "Get all the answers",
+            description = "Returns the complete list of registered responses")
+    @ApiResponse(responseCode = "200", description = "Responses successfully obtained")
         @GetMapping(path = "/getAnswers")
     public ArrayList<AnswerModel> getAllAnswers() {
         return this.answerService.getAllAnswers();
     }
 
 
-    @Operation(summary = "Registrar nueva respuesta",
-            description = "Guarda una nueva respuesta en el sistema")
-    @ApiResponse(responseCode = "200", description = "Respuesta guardada exitosamente")
+    @Operation(summary = "Register new answer",
+            description = "Saves a new answer in the system")
+    @ApiResponse(responseCode = "200", description = "Answer successfully saved")
     @PostMapping(path = "/newAnswer")
     public AnswerModel saveAnswer(@RequestBody AnswerModel answer) {
         return this.answerService.saveAnswer(answer);
     }
 
 
-    @Operation(summary = "Obtener respuesta por ID")
+    @Operation(summary = "Get response by ID")
     @ApiResponses({
-            @ApiResponse(responseCode = "200", description = "Respuesta encontrada"),
-            @ApiResponse(responseCode = "404", description = "Respuesta no encontrada")
+            @ApiResponse(responseCode = "200", description = "Answer found"),
+            @ApiResponse(responseCode = "404", description = "Answer not found")
     })
     @GetMapping(path = "/{id}")
     public Optional<AnswerModel> getAnswerById(
-            @Parameter(description = "ID de la respuesta") @PathVariable("id") Long id) {
+            @Parameter(description = "Response ID") @PathVariable("id") Long id) {
         return this.answerService.getAnswerById(id);
     }
 

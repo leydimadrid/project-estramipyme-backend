@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.Optional;
 
-@Tag(name = "Usuarios", description = "API para gestión de usuarios del sistema")
+@Tag(name = "Users", description = "API for system user management")
 @RestController
 @RequestMapping(path = "api/users")
 public class UserController {
@@ -27,18 +27,18 @@ public class UserController {
     } //Fin inyección de dependencias
 
 
-    @Operation(summary = "Listar usuarios",
-            description = "Obtiene la lista de todos los usuarios registrados")
-    @ApiResponse(responseCode = "200", description = "Lista de usuarios obtenida exitosamente")
+    @Operation(summary = "List users",
+            description = "Gets the list of all registered users")
+    @ApiResponse(responseCode = "200", description = "List of users successfully obtained")
     @GetMapping(path = "/getUsers")
     public ArrayList<UserModel> getUser() {
         return this.userService.getUser();
     }
 
 
-    @Operation(summary = "Crear nuevo usuario",
-            description = "Registra un nuevo usuario en el sistema")
-    @ApiResponse(responseCode = "200", description = "Usuario creado exitosamente")
+    @Operation(summary = "Create new user",
+            description = "Register a new user in the system")
+    @ApiResponse(responseCode = "200", description = "User successfully created")
     @PostMapping(path = "/newUser")
     public UserModel saveUser(@RequestBody UserModel user) {
         return this.userService.saveUser(user);
@@ -46,14 +46,14 @@ public class UserController {
 
 
 
-    @Operation(summary = "Obtener usuario por ID")
+    @Operation(summary = "Get user by ID")
     @ApiResponses({
-            @ApiResponse(responseCode = "200", description = "Usuario encontrado"),
-            @ApiResponse(responseCode = "404", description = "Usuario no encontrado")
+            @ApiResponse(responseCode = "200", description = "User found"),
+            @ApiResponse(responseCode = "404", description = "User not found")
     })
     @GetMapping(path = "/{id}")
     public Optional<UserModel> getUserById(
-            @Parameter(description = "ID del usuario") @PathVariable("id") Long id) {
+            @Parameter(description = "User ID") @PathVariable("id") Long id) {
         return this.userService.getById(id);
     }
 

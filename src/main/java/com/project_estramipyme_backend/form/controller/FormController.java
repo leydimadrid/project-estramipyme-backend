@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.ArrayList;
 import java.util.Optional;
 
-@Tag(name = "Formularios", description = "API para gestión de formularios de evaluación")
+@Tag(name = "Forms", description = "API for evaluation form management")
 @RestController
 @RequestMapping("/api/form")
 //@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST})
@@ -25,30 +25,29 @@ public class FormController {
     @Autowired
     private FormService formService;
 
-    @Operation(summary = "Obtener todos los formularios")
-    @ApiResponse(responseCode = "200", description = "Formularios obtenidos exitosamente")
+    @Operation(summary = "Get all forms")
+    @ApiResponse(responseCode = "200", description = "Successfully obtained forms")
     @GetMapping(path = "/getForm")
     public ArrayList<FormModel> getForm() {
         return this.formService.getForm();
     }
 
 
-
-    @Operation(summary = "Obtener formulario por ID")
+    @Operation(summary = "Get form by ID")
     @ApiResponses({
-            @ApiResponse(responseCode = "200", description = "Formulario encontrado"),
-            @ApiResponse(responseCode = "404", description = "Formulario no encontrado")
+            @ApiResponse(responseCode = "200", description = "Form found"),
+            @ApiResponse(responseCode = "404", description = "Form not found")
 
     })
 
     @GetMapping(path = "/{id}")
     public Optional<FormModel> getFormById(
-            @Parameter(description = "ID del formulario") @PathVariable("id") Long id) {
+            @Parameter(description = "Form ID") @PathVariable("id") Long id) {
         return this.formService.getById(id);
     }
 
 
-    }
+}
 
 
 
