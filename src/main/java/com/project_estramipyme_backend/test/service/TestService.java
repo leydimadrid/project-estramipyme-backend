@@ -1,5 +1,6 @@
 package com.project_estramipyme_backend.test.service;
 
+import com.project_estramipyme_backend.test.dto.InfoEsquemaReoDTO;
 import com.project_estramipyme_backend.test.model.TestModel;
 import com.project_estramipyme_backend.test.repository.ITestRepository;
 import com.project_estramipyme_backend.user.model.UserModel;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -28,5 +30,8 @@ public class TestService {
         return testRepository.findById(id);
     }
 
+    public List<InfoEsquemaReoDTO> getReportEsquemaReo(Long formId) {
+        return testRepository.getReportEsquemaReo(formId);
+    }
 
 }

@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Tag(name = "Answers", description = "API for evaluation response management")
@@ -38,13 +39,7 @@ public class AnswerController {
     @Operation(summary = "Get all the answers",
             description = "Returns the complete list of registered responses")
     @ApiResponse(responseCode = "200", description = "Responses successfully obtained")
-        @GetMapping(path = "/getAnswers")
-
-
-
-
     @GetMapping(path = "/getAnswers")
-
     public ArrayList<AnswerModel> getAllAnswers() {
         return this.answerService.getAllAnswers();
     }
