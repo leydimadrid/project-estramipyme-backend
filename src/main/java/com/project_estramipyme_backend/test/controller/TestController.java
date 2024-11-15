@@ -49,14 +49,8 @@ public class TestController {
     @ApiResponse(responseCode = "200", description = "Successful tests")
     @GetMapping(path = "/getReportRadarEstrategico/{id}")
     public List<InfoEsquemaReoDTO> reportRadarEstrategico(@Parameter(description = "Test ID") @PathVariable("id") Long id) {
-        return this.testService.getReportEsquemaReo(id);
-/*
-        var test = this.testService.getEncabezadoReport(idTest);
-        var resultReo = this.testService.getRespotREO(idTest);
-        var resultCirculo = this.testService.getRespotCirculo(idTest);
-
-        functionGenerarPDF(test,resultReo,resultCirculo);
-*/
+        List<InfoEsquemaReoDTO> response = this.testService.getReportEsquemaReo(id);
+        return response;
     }
 
     @Operation(summary = "Create new test",

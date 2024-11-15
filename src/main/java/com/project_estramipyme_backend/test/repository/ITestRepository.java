@@ -18,7 +18,7 @@ public interface ITestRepository extends JpaRepository<TestModel, Long> {
           JOIN Question_Option qo ON qo = ao.question_option
           JOIN Question q ON q = qo.question
           JOIN FormModel f ON f = q.form
-          WHERE t.id = :testId
+          WHERE t.id = :testId AND f.id <> 6
           GROUP BY f.id, f.name
           """)
     List<InfoEsquemaReoDTO> getReportEsquemaReo(@Param("testId") Long testId);
