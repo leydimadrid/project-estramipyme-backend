@@ -4,6 +4,7 @@ package com.project_estramipyme_backend.test.controller;
 import com.project_estramipyme_backend.answer.model.AnswerModel;
 import com.project_estramipyme_backend.answer.service.AnswerService;
 import com.project_estramipyme_backend.form.model.Question_Option;
+import com.project_estramipyme_backend.test.dto.InfoEsquemaReoDTO;
 import com.project_estramipyme_backend.test.dto.TestRequestDTO;
 import com.project_estramipyme_backend.test.model.TestModel;
 import com.project_estramipyme_backend.test.service.TestService;
@@ -43,6 +44,14 @@ public class TestController {
         return this.testService.getTest();
     }
 
+    @Operation(summary = "Report Esquema Reo",
+            description = "Return list of score")
+    @ApiResponse(responseCode = "200", description = "Successful tests")
+    @GetMapping(path = "/getReportRadarEstrategico/{id}")
+    public List<InfoEsquemaReoDTO> reportRadarEstrategico(@Parameter(description = "Test ID") @PathVariable("id") Long id) {
+        List<InfoEsquemaReoDTO> response = this.testService.getReportEsquemaReo(id);
+        return response;
+    }
 
     @Operation(summary = "Create new test",
             description = "Register a new test in the system")
