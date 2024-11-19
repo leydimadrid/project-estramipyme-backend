@@ -46,20 +46,14 @@ public class AnswerController {
         return this.answerService.getAnswerById(id);
     }
 
-    @GetMapping("/pdf/{id}")
-    public ResponseEntity<byte[]> downloadPDF(@PathVariable Long id) {
-        Optional<AnswerModel> answers = answerService.getAnswerById(id);
+    @PostMapping("/pdf/{id}")
+    public ResponseEntity<byte[]> downloadPDF(@PathVariable("id") Long id, @RequestBody PDFRequestDTO pdfRequestDTO) {
 
-        if (answers.isEmpty()) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body(null);
-        }
-
-        ByteArrayOutputStream pdfOutput = pdfService.generatePDF(answers);
+        ByteArrayOutputStream pdfOutput = pdfService.generatePDF(id, pdfRequestDTO);
 
         byte[] pdfBytes = pdfOutput.toByteArray();
         return ResponseEntity.ok()
-                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=answers.pdf")
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=Reporte.pdf")
                 .contentType(MediaType.APPLICATION_PDF)
                 .body(pdfBytes);
     }
