@@ -10,9 +10,8 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ReportREODTO {
-    private Long id;
+public class ReportDTO {
     private String name;
     private double score;
-    private String result;
+    private String recommendation;
 }
