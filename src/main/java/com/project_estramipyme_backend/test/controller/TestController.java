@@ -1,14 +1,18 @@
 package com.project_estramipyme_backend.test.controller;
 
 
+import com.project_estramipyme_backend.Security.security.CustomUserDetailsService;
 import com.project_estramipyme_backend.answer.model.AnswerModel;
 import com.project_estramipyme_backend.answer.service.AnswerService;
 import com.project_estramipyme_backend.form.model.Question_Option;
 import com.project_estramipyme_backend.test.dto.InfoEsquemaReoDTO;
+import com.project_estramipyme_backend.test.dto.InfoResultadoCirculoDoradoDTO;
 import com.project_estramipyme_backend.test.dto.TestRequestDTO;
 import com.project_estramipyme_backend.test.model.TestModel;
 import com.project_estramipyme_backend.test.service.TestService;
 import com.project_estramipyme_backend.user.model.UserModel;
+import com.project_estramipyme_backend.user.repository.IUserRepository;
+import com.project_estramipyme_backend.user.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -30,6 +34,8 @@ public class TestController {
     private final TestService testService;
     @Autowired
     private AnswerService answerService;
+    @Autowired
+    private IUserRepository userRepository;
 
     @Autowired
     public TestController(TestService testService) {
@@ -53,6 +59,25 @@ public class TestController {
         return response;
     }
 
+    @Operation(summary = "Report Circulo dorado",
+            description = "Return list of total")
+    @ApiResponse(responseCode = "200", description = "Successful tests")
+    @GetMapping(path = "/getReportCirculoDorado/{id}")
+    public List<InfoResultadoCirculoDoradoDTO> reportCirculoDorado(@Parameter(description = "Test ID") @PathVariable("id") Long id) {
+
+        List<InfoResultadoCirculoDoradoDTO> result = new ArrayList<>();
+
+        InfoResultadoCirculoDoradoDTO infoPorQue = this.testService.getPorqueInfoCirculo(id);
+        InfoResultadoCirculoDoradoDTO infoComo = this.testService.getComoInfoCirculo(id);
+        InfoResultadoCirculoDoradoDTO infoQue = this.testService.getQueInfoCirculo(id);
+
+        result.add(infoPorQue);
+        result.add(infoComo);
+        result.add(infoQue);
+
+        return result;
+    }
+
     @Operation(summary = "Create new test",
             description = "Register a new test in the system")
     @ApiResponse(responseCode = "200", description = "Test successfully created")
@@ -62,7 +87,11 @@ public class TestController {
         TestModel testModel = new TestModel();
         testModel.setUsers(new UserModel());
         testModel.setDate(test.getDate());
-        testModel.getUsers().setId(test.getUser_id());
+
+        UserModel user = this.userRepository.findByEmail(test.getUserEmail())
+                .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+
+        testModel.setUsers(user);
 
         TestModel testBd = this.testService.saveTest(testModel);
 
