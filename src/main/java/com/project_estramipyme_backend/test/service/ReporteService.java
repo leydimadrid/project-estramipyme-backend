@@ -16,6 +16,7 @@ import com.project_estramipyme_backend.test.repository.ITestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Base64;
 import java.util.List;
 import java.io.ByteArrayOutputStream;
 
@@ -51,7 +52,7 @@ public class ReporteService {
 
 
             Paragraph info = new Paragraph()
-                    .add(new Text("Datos del Usuario:").setBold().setFontSize(12))
+                    .add(new Text("Datos del Usuario").setBold().setFontSize(12))
                     .add("\n")
                     .add(new Text("Test No: ").setBold().setFontSize(12))
                     .add(idTest + "\n")
@@ -175,4 +176,5 @@ public class ReporteService {
             throw new RuntimeException("Error al generar el PDF", e);
         }
     }
+
 }
