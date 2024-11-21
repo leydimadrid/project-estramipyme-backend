@@ -1,6 +1,9 @@
 package com.project_estramipyme_backend.test.controller;
 
 import com.project_estramipyme_backend.test.service.ReporteService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -17,6 +20,11 @@ public class ReporteController {
     @Autowired
     private ReporteService reporteService;
 
+    @Operation(summary = "Get response by ID", description = "Get a Test Report by ID")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Test found"),
+            @ApiResponse(responseCode = "404", description = "Test not found")
+    })
     @GetMapping("/{testId}")
     public ResponseEntity<byte[]> descargarPDF(@PathVariable("testId") Long testId) {
         try {
