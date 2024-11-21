@@ -3,6 +3,8 @@ package com.project_estramipyme_backend.Security.controllers;
 import com.project_estramipyme_backend.Security.security.JwtUtilRec;
 import com.project_estramipyme_backend.user.model.UserModel;
 import com.project_estramipyme_backend.user.repository.IUserRepository;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mail.SimpleMailMessage;
@@ -23,6 +25,13 @@ public class AuthControllerRec {
 
     @Autowired
     private JavaMailSender mailSender;
+    @Operation(
+            summary = "Forgot Password",
+            description = "Initiates the password recovery process by sending a reset link to the user's email address."
+    )
+    @ApiResponse(responseCode = "200", description = "Password recovery email successfully sent")
+    @ApiResponse(responseCode = "404", description = "User not found with the provided email")
+    @ApiResponse(responseCode = "400", description = "Invalid email format or missing email field")
     @PostMapping("/forgot-password")
     public ResponseEntity<String> forgotPassword(@RequestBody String email) {
         // Verifica si el usuario existe en la base de datos

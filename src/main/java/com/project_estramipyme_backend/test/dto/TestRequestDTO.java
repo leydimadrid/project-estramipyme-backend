@@ -6,7 +6,7 @@ import java.util.List;
 public class TestRequestDTO {
     private Long id;
     private LocalDateTime date;
-    private Long user_id;
+    private String userEmail;
     private List<Long> answers_option_ids;
 
     public Long getId() {
@@ -25,13 +25,6 @@ public class TestRequestDTO {
         this.date = date;
     }
 
-    public Long getUser_id() {
-        return user_id;
-    }
-
-    public void setUser_id(Long user_id) {
-        this.user_id = user_id;
-    }
 
     public List<Long> getAnswers_option_ids() {
         return answers_option_ids;
@@ -39,5 +32,13 @@ public class TestRequestDTO {
 
     public void setAnswers_option_ids(List<Long> answers_option_ids) {
         this.answers_option_ids = answers_option_ids;
+    }
+
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
     }
 }
