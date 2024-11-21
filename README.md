@@ -6,7 +6,7 @@
 2. [Tecnologías](#tecnologías)
 3. [Requisitos Previos](#requisitos-previos)
 4. [Configuración del Proyecto](#configuración-del-proyecto)
-5. [API Documentation](#api-endpoints)
+5. [API Documentation](#api-documentation)
 6. [Contribuciones](#contribuciones)
 
 ---
