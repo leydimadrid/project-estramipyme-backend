@@ -1,70 +1,111 @@
 # **Estramipyme**
 
-Este proyecto es un backend desarrollado en Java que proporciona funcionalidades de autenticación y gestión de formularios. Incluye un sistema de login y registro de usuarios, permite gestionar formularios dinámicos y genera reportes personalizados en formato PDF. Está construido utilizando Spring Boot, con seguridad implementada mediante Spring Security. Además, se utiliza Swagger para documentar la API, asegurando una interfaz clara y accesible para los desarrolladores.
-
 ## **Índice**
 
-1. [Descripción](#descripción)  
-2. [Tecnologías](#tecnologías)  
-3. [Requisitos Previos](#requisitos-previos)  
-4. [Configuración del Proyecto](#configuración-del-proyecto)  
-5. [Ejecución](#ejecución)  
-6. [Estructura del Proyecto](#estructura-del-proyecto)  
-7. [API Endpoints](#api-endpoints)  
-8. [Contribuciones](#contribuciones)  
-9. [Licencia](#licencia)  
+1. [Descripción](#descripción)
+2. [Tecnologías](#tecnologías)
+3. [Requisitos Previos](#requisitos-previos)
+4. [Configuración del Proyecto](#configuración-del-proyecto)
+5. [API Documentation](#api-endpoints)
+6. [Contribuciones](#contribuciones)
 
 ---
 
 ## **Descripción**
 
-Explica en detalle el propósito del proyecto, sus funcionalidades principales y su alcance.
-
-**Ejemplo:**  
-> Este proyecto es un backend para gestionar un sistema de formularios dinámicos. Permite el registro de usuarios, autenticación, almacenamiento de respuestas y generación de reportes.
+> Este proyecto es un backend desarrollado en Java que proporciona funcionalidades de autenticación y gestión de
+formularios. Incluye un sistema de login y registro de usuarios, permite gestionar formularios y genera
+reportes personalizados en formato PDF. Está construido utilizando Spring Boot, con seguridad implementada mediante
+Spring Security. Además, se utiliza Swagger para documentar la API, asegurando una interfaz clara y accesible para los
+desarrolladores.
 
 ---
 
 ## **Tecnologías**
 
-Lista de herramientas y tecnologías utilizadas en el proyecto.
-
-- **Lenguaje:** Java 17  
-- **Framework:** Spring Boot 3  
-- **Base de Datos:** PostgreSQL 
+- **Lenguaje:** Java 17
+- **Framework:** Spring Boot 3
+- **Base de Datos:** PostgreSQL
 - **Herramientas adicionales:** Lombok, Swagger.
 
 ---
 
 ## **Requisitos Previos**
 
-Lista de software necesario para correr el proyecto.
-
-- **Java JDK**: versión 17 o superior  
-- **Maven**: versión 3.8+  
-- **Base de datos**: PostgreSQL 14 o compatible  
+- **Java JDK**: versión 17 o superior
+- **Maven**: versión 3.8+
+- **Base de datos**: PostgreSQL 14 o compatible
 
 ---
+
+## **Configuración del Proyecto**
+
+Guía paso a paso para clonar, configurar y preparar el proyecto.
+
+### **Clonar el repositorio**
+
+Ejecuta los siguientes comandos en tu terminal:
+
+```sh
+git clone https://github.com/leydimadrid/project-estramipyme-backend.git
+cd project-estramipyme-backend
+```
+
+### **Configurar las variables de entorno**
+
+Actualiza los valores en el archivo application.properties o utiliza un archivo .env para las credenciales de la base de
+datos.
+
+```sh
+spring.datasource.url=jdbc:postgresql://localhost:5432/nombre_base_datos
+spring.datasource.username=usuario
+spring.datasource.password=contraseña
+```
+
+### **Instalar dependencias**
+
+```sh
+mvn clean install
+```
 
 # **API Documentation**
-
-Este documento describe los endpoints de la API del proyecto, incluyendo ejemplos y detalles para su uso.
-
----
-
-## **Índice**
-1. [Introducción](#introducción)  
-2. [Autenticación](#autenticación)  
-3. [Gestión de Contraseñas](#gestión-de-contraseñas)  
-4. [Formularios](#formularios)  
-5. [Reportes](#reportes)  
 
 ---
 
 ## **Introducción**
 
-La API está diseñada para gestionar usuarios, formularios y reportes. Utiliza autenticación basada en tokens (JWT) y cuenta con documentación interactiva generada con Swagger.  
+La API está diseñada para gestionar usuarios, formularios y reportes. Utiliza autenticación basada en tokens (JWT) y
+cuenta con documentación interactiva generada con Swagger.
 
-![Swagger UI](./images/swagger-ui.png)  
+![Swagger UI](./images/swagger1.png)
+![Swagger UI](./images/swagger2.png)
+![Swagger UI](./images/swagger3.png)
+
+## **Contribuciones**
+
+Si deseas contribuir al proyecto, sigue estos pasos:
+
+1. Haz un fork del repositorio.
+2. Crea una nueva rama para tus cambios:
+
+```sh
+git checkout -b nombre-rama
+```
+
+3. Realiza los cambios necesarios en el código y haz un commit:
+
+```sh
+git commit -m "Descripción del cambio"
+```
+
+4. Haz un push de los cambios a tu rama:
+
+```sh
+git push origin nombre-rama
+```
+
+5. Crea un Pull Request desde tu rama hacia el repositorio original.
+
+**¡Gracias por contribuir! Todas las propuestas serán revisadas antes de su integración.**
 
 
