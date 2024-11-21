@@ -131,9 +131,9 @@ public interface ITestRepository extends JpaRepository<TestModel, Long> {
                                 WHEN (SUM(qo.score) * 100 / 16) <= 25 THEN 'Si bien hay algún grado de definición del propósito, es necesario clarificarlo aún más y alinearlo con los objetivos a mediano plazo. Involucra a todas las partes interesadas en este proceso para asegurar que el propósito sea relevante y compartido.'
                                 WHEN (SUM(qo.score) * 100 / 16) <= 50 THEN 'Con un puntaje moderado, es importante evaluar qué tan alineado está realmente tu equipo con el propósito del negocio. Realiza encuestas internas o focus groups para identificar áreas donde la alineación puede ser mejorada.'
                                 WHEN (SUM(qo.score) * 100 / 16) <= 75 THEN 'Con un buen nivel de claridad y alineación, enfócate en reforzar el propósito en todos los aspectos de la cultura organizacional. Esto incluye desde el reclutamiento y la inducción hasta las evaluaciones de desempeño.'
-                                WHEN (SUM(qo.score) * 100 / 16) <= 80 THEN 'Con un propósito bien definido y comprendido, es hora de escalar su impacto. Considera iniciativas de responsabilidad social corporativa (RSC) que refuercen el propósito y lo expandan a nuevos públicos y comunidades.'
+                                WHEN (SUM(qo.score) * 100 / 16) >= 80 THEN 'Con un propósito bien definido y comprendido, es hora de escalar su impacto. Considera iniciativas de responsabilidad social corporativa (RSC) que refuercen el propósito y lo expandan a nuevos públicos y comunidades.'
             
-                                ELSE 'Cómo: Excelente nivel. Ejecución impecable.'
+                                ELSE 'No hay recomendaciones'
                             END)
                     FROM TestModel t
                     JOIN AnswerModel ao ON ao.test = t
@@ -149,9 +149,9 @@ public interface ITestRepository extends JpaRepository<TestModel, Long> {
                                 WHEN (SUM(qo.score) * 100 / 16) <= 25 THEN 'Aunque existe alguna consistencia en seguir procesos documentados, es necesario reforzar y revisar estos procesos para asegurar que todos los empleados los sigan de manera uniforme. Se pueden realizar sesiones de formación adicionales y auditorías regulares para mantener la consistencia.'
                                 WHEN (SUM(qo.score) * 100 / 16) <= 50 THEN 'Aunque los procesos son razonablemente eficientes, siempre hay margen de mejora. Revisa regularmente los procesos y busca oportunidades para optimizar el uso de recursos y tiempo, manteniendo la calidad como prioridad.'
                                 WHEN (SUM(qo.score) * 100 / 16) <= 75 THEN 'Con una alta consistencia en los procesos, el enfoque debe estar en perfeccionarlos. Esto podría incluir la adopción de prácticas de mejores prácticas del sector y la evaluación continua de la efectividad de los procesos para mantener un rendimiento óptimo.'
-                                WHEN (SUM(qo.score) * 100 / 16) <= 80 THEN 'Con procesos bien establecidos y seguidos consistentemente, enfócate en perfeccionarlos aún más. Documenta los procesos detalladamente y asegúrate de que estén fácilmente accesibles para todos los empleados, lo que facilitará la capacitación y la replicación de buenas prácticas.'
+                                WHEN (SUM(qo.score) * 100 / 16) >= 80 THEN 'Con procesos bien establecidos y seguidos consistentemente, enfócate en perfeccionarlos aún más. Documenta los procesos detalladamente y asegúrate de que estén fácilmente accesibles para todos los empleados, lo que facilitará la capacitación y la replicación de buenas prácticas.'
             
-                                ELSE 'Cómo: Excelente nivel. Ejecución impecable.'
+                                ELSE 'No hay recomendaciones'
                             END)
                     FROM TestModel t
                     JOIN AnswerModel ao ON ao.test = t
@@ -167,8 +167,8 @@ public interface ITestRepository extends JpaRepository<TestModel, Long> {
                                 WHEN (SUM(qo.score) * 100 / 16) <= 25 THEN 'Con puntajes bajos en la relación calidad-precio, enfócate en mejorar la calidad de tus productos o servicios sin aumentar significativamente los costos. Considera opciones para optimizar la producción y ofrecer precios más competitivos.'
                                 WHEN (SUM(qo.score) * 100 / 16) <= 50 THEN 'Si los productos/servicios cumplen moderadamente con las expectativas de los clientes, evalúa tu propuesta de valor. Identifica áreas donde puedes ofrecer algo único o agregar más valor para que tus clientes perciban un mayor beneficio.'
                                 WHEN (SUM(qo.score) * 100 / 16) <= 75 THEN 'Aunque tus productos o servicios son relativamente innovadores, sigue buscando maneras de mejorar. Evalúa nuevas tecnologías, materiales o metodologías que podrían mantener tu oferta a la vanguardia del mercado.'
-                                WHEN (SUM(qo.score) * 100 / 16) <= 80 THEN 'Con un alto grado de escalabilidad y sostenibilidad, explora oportunidades para expandir tu modelo de negocio a nuevas geografías o mercados. Considera alianzas estratégicas o franquicias para acelerar este crecimiento.'
-                                ELSE 'Cómo: Excelente nivel. Ejecución impecable.'
+                                WHEN (SUM(qo.score) * 100 / 16) >= 80 THEN 'Con un alto grado de escalabilidad y sostenibilidad, explora oportunidades para expandir tu modelo de negocio a nuevas geografías o mercados. Considera alianzas estratégicas o franquicias para acelerar este crecimiento.'
+                                ELSE 'No hay recomendaciones'
                             END)
                     FROM TestModel t
                     JOIN AnswerModel ao ON ao.test = t
