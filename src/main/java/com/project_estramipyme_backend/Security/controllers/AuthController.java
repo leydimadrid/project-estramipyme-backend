@@ -40,23 +40,23 @@ public class AuthController {
         this.personService = personService;
     }
 
-    @Operation(summary = "Registro de usuario",
-            description = "Crea un nuevo usuario en el sistema")
-    @ApiResponse(responseCode = "200", description = "Usuario registrado exitosamente")
+    @Operation(summary = "User registration",
+            description = "Create a new user in the system")
+    @ApiResponse(responseCode = "200", description = "User successfully registered")
 
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody UserModel person) {
         person.setPassword(passwordEncoder.encode(person.getPassword()));  // Codifica la contraseña
         personService.saveUser(person);
-        return ResponseEntity.ok().body("{\"message\": \"Usuario registrado exitosamente\"}");
+        return ResponseEntity.ok().body("{\"message\": \"User successfully registered\"}");
     }
 
 
-    @Operation(summary = "Login de usuario",
-            description = "Autentica un usuario y retorna token JWT")
+    @Operation(summary = "User login",
+            description = "Authenticate a user and return JWT token")
     @ApiResponses({
-            @ApiResponse(responseCode = "200", description = "Login exitoso"),
-            @ApiResponse(responseCode = "401", description = "Credenciales inválidas")
+            @ApiResponse(responseCode = "200", description = "Successful login"),
+            @ApiResponse(responseCode = "401", description = "Invalid credentials")
     })
 
     @PostMapping("/login")
