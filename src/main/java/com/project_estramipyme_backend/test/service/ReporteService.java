@@ -44,6 +44,7 @@ public class ReporteService {
             Font font = new Font(Font.FontFamily.HELVETICA, 16, Font.BOLD);
 
             Paragraph titulo = new Paragraph("Resultados Test Estramipyme", font);
+            titulo.setSpacingAfter(25);
             titulo.setAlignment(Element.ALIGN_CENTER);
 
             document.add(titulo);
@@ -86,8 +87,7 @@ public class ReporteService {
 
             // Tabla 1: Resultado Esquema REO
             Paragraph radarTitle = new Paragraph("\nResultados Radar Estratégico", font);
-            Chunk padding = new Chunk("\n\n");
-            radarTitle.add(padding);
+            radarTitle.setSpacingAfter(25);
             radarTitle.setAlignment(Element.ALIGN_CENTER);
             document.add(radarTitle);
 
@@ -95,6 +95,7 @@ public class ReporteService {
             tablaREO.setWidthPercentage(100);
 
             PdfPCell headerCell1 = new PdfPCell(new Phrase("Sección"));
+            headerCell1.setPadding(10);
             headerCell1.setBackgroundColor(BaseColor.DARK_GRAY);
             headerCell1.setHorizontalAlignment(Element.ALIGN_CENTER);
             headerCell1.setVerticalAlignment(Element.ALIGN_MIDDLE);
@@ -109,6 +110,7 @@ public class ReporteService {
             headerCell2.setPhrase(new Phrase("Puntaje", new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD, BaseColor.WHITE)));
 
             PdfPCell headerCell3 = new PdfPCell(new Phrase("Recomendaciones"));
+            headerCell3.setPadding(10);
             headerCell3.setBackgroundColor(BaseColor.DARK_GRAY);
             headerCell3.setHorizontalAlignment(Element.ALIGN_CENTER);
             headerCell3.setVerticalAlignment(Element.ALIGN_MIDDLE);
@@ -178,17 +180,22 @@ public class ReporteService {
 
             List<ReportDTO> resultCirculoDorado = testRepository.getReportCirculo(testId);
 
-            // Tabla 1: Resultado Circulo Dorado
+            // Tabla 2: Resultado Circulo Dorado
             Paragraph circuloTitle = new Paragraph("\nResultados Círculo Dorado", font);
-            circuloTitle.add(padding);
+            circuloTitle.setSpacingAfter(25);
+            circuloTitle.setSpacingBefore(100);
             circuloTitle.setAlignment(Element.ALIGN_CENTER);
             document.add(circuloTitle);
 
+
             PdfPTable circuloDorado = new PdfPTable(new float[]{3, 2, 6});
             circuloDorado.setWidthPercentage(100);
+            circuloDorado.setKeepTogether(true);
+
+
 
             PdfPCell headerCell4 = new PdfPCell(new Phrase("Sección"));
-            headerCell2.setPadding(10);
+            headerCell4.setPadding(10);
             headerCell4.setBackgroundColor(BaseColor.DARK_GRAY);
             headerCell4.setHorizontalAlignment(Element.ALIGN_CENTER);
             headerCell4.setVerticalAlignment(Element.ALIGN_MIDDLE);
@@ -196,12 +203,14 @@ public class ReporteService {
 
 
             PdfPCell headerCell5 = new PdfPCell(new Phrase("Puntaje"));
+            headerCell5.setPadding(10);
             headerCell5.setBackgroundColor(BaseColor.DARK_GRAY);
             headerCell5.setHorizontalAlignment(Element.ALIGN_CENTER);
             headerCell5.setVerticalAlignment(Element.ALIGN_MIDDLE);
             headerCell5.setPhrase(new Phrase("Puntaje", new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD, BaseColor.WHITE)));
 
             PdfPCell headerCell6 = new PdfPCell(new Phrase("Recomendaciones"));
+            headerCell6.setPadding(10);
             headerCell6.setBackgroundColor(BaseColor.DARK_GRAY);
             headerCell6.setHorizontalAlignment(Element.ALIGN_CENTER);
             headerCell6.setVerticalAlignment(Element.ALIGN_MIDDLE);
@@ -220,7 +229,7 @@ public class ReporteService {
                 nameCell.setVerticalAlignment(Element.ALIGN_MIDDLE);
 
 
-                PdfPCell scoreCell = new PdfPCell(new Phrase(String.valueOf(circuloDto.getScore()), new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD)));
+                PdfPCell scoreCell = new PdfPCell(new Phrase(String.valueOf(circuloDto.getScore() + "%"), new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD)));
                 scoreCell.setPadding(10);
                 scoreCell.setHorizontalAlignment(Element.ALIGN_CENTER);
                 scoreCell.setVerticalAlignment(Element.ALIGN_MIDDLE);
