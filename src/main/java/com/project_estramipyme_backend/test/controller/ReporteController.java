@@ -30,6 +30,7 @@ public class ReporteController {
         try {
             byte[] pdf = reporteService.generarReportePDF(testId);
             String fileName = "reporte_" + testId + ".pdf";
+
             return ResponseEntity.ok()
                     .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + fileName)
                     .contentType(MediaType.APPLICATION_PDF)
