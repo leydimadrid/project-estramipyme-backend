@@ -3,7 +3,6 @@ package com.project_estramipyme_backend.form.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.project_estramipyme_backend.test.model.TestModel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -25,12 +24,12 @@ public class Question_Option {
 
     @ManyToOne
     @JoinColumn(name = "option_id", nullable = true)
-    @JsonManagedReference //Le indica a Jackson que esa referencia es la "parte principal" de la relación
+    @JsonManagedReference
     private Option option;
 
 
     @ManyToOne
     @JoinColumn(name = "question_id", nullable = true)
-    @JsonBackReference // Evita la recursión hacia Question
+    @JsonBackReference
     private Question question;
 }

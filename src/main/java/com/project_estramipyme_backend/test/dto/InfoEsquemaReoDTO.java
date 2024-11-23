@@ -14,6 +14,7 @@ public class InfoEsquemaReoDTO {
 
     public InfoEsquemaReoDTO() {
     }
+
     public Long getId() {
         return id;
     }

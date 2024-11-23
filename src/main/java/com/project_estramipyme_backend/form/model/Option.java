@@ -1,8 +1,7 @@
 package com.project_estramipyme_backend.form.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.project_estramipyme_backend.answer.model.AnswerModel;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,7 +22,7 @@ public class Option {
     private Long id;
     private String text;
 
-    @JsonIgnore //Esta anotación es útil para omitir ciertos atributos de un objeto durante el proceso de conversión a JSON
+    @JsonIgnore
     @OneToMany(mappedBy = "option", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Question_Option> questionOptions; // Relación con la tabla intermedia
 }
