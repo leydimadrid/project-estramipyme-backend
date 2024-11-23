@@ -25,6 +25,7 @@ public class AuthControllerRec {
 
     @Autowired
     private JavaMailSender mailSender;
+
     @Operation(
             summary = "Forgot Password",
             description = "Initiates the password recovery process by sending a reset link to the user's email address."
@@ -38,7 +39,7 @@ public class AuthControllerRec {
         UserModel user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
 
-        // Genera un token JWT con el email del usuario y un tiempo de expiración corto (ej. 30 minutos)
+        // Genera un token JWT con el email del usuario y un tiempo de expiración corto
         String token = jwtUtil.generateTokenForPasswordReset(email);
 
         // Envía el token al correo electrónico del usuario

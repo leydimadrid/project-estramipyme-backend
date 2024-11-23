@@ -5,7 +5,6 @@ public class InfoResultadoCirculoDoradoDTO {
     private double total;
 
 
-
     public InfoResultadoCirculoDoradoDTO(String grupo, double total) {
         this.grupo = grupo;
         this.total = total;

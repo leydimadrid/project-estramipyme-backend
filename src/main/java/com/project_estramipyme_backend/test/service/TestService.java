@@ -4,8 +4,7 @@ import com.project_estramipyme_backend.test.dto.InfoEsquemaReoDTO;
 import com.project_estramipyme_backend.test.dto.InfoResultadoCirculoDoradoDTO;
 import com.project_estramipyme_backend.test.model.TestModel;
 import com.project_estramipyme_backend.test.repository.ITestRepository;
-import com.project_estramipyme_backend.user.model.UserModel;
-import com.project_estramipyme_backend.user.repository.IUserRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,15 +34,15 @@ public class TestService {
         return testRepository.getReportEsquemaReo(formId);
     }
 
-    public InfoResultadoCirculoDoradoDTO getPorqueInfoCirculo(Long formId){
+    public InfoResultadoCirculoDoradoDTO getPorqueInfoCirculo(Long formId) {
         return testRepository.getPorqueInfoCirculo(formId);
     }
 
-    public InfoResultadoCirculoDoradoDTO getComoInfoCirculo(Long formId){
+    public InfoResultadoCirculoDoradoDTO getComoInfoCirculo(Long formId) {
         return testRepository.getComoInfoCirculo(formId);
     }
 
-    public InfoResultadoCirculoDoradoDTO getQueInfoCirculo(Long formId){
+    public InfoResultadoCirculoDoradoDTO getQueInfoCirculo(Long formId) {
         return testRepository.getQueInfoCirculo(formId);
     }
 }

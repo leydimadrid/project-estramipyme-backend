@@ -38,7 +38,7 @@ public class UserModel implements UserDetails {
     private Sector sector;
 
     private String otherSector;
-    @Column(unique = true)  // Asegura que el email sea único
+    @Column(unique = true)
     private String email;
 
     private String password;
@@ -46,14 +46,14 @@ public class UserModel implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        // Devuelve la lista de roles o permisos del usuario. Puedes retornar una lista vacía si no estás usando roles.
+
         return List.of();
     }
 
 
     @Override
     public String getUsername() {
-        return this.email;  // Usa el correo electrónico como nombre de usuario
+        return this.email;
     }
 
     @Override
@@ -63,21 +63,21 @@ public class UserModel implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return true;  // Puedes agregar lógica para determinar si la cuenta está expirada
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return true;  // Puedes agregar lógica para determinar si la cuenta está bloqueada
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return true;  // Puedes agregar lógica para verificar si las credenciales han expirado
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return true;  // Puedes agregar lógica para determinar si el usuario está habilitado
+        return true;
     }
 }

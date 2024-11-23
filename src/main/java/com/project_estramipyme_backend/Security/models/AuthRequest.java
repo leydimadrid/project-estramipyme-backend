@@ -4,10 +4,11 @@ public class AuthRequest {
     private String email;
     private String password;
 
-    // Constructor vacío
-    public AuthRequest() {}
 
-    // Getters y setters
+    public AuthRequest() {
+    }
+
+
     public String getEmail() {
         return email;
     }

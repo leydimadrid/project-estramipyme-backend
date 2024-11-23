@@ -1,18 +1,8 @@
 package com.project_estramipyme_backend.test.service;
 
 
-//import com.itextpdf.kernel.colors.ColorConstants;
-//import com.itextpdf.kernel.colors.DeviceRgb;
-//import com.itextpdf.kernel.pdf.PdfDocument;
-//import com.itextpdf.kernel.pdf.PdfWriter;
-//import com.itextpdf.layout.Document;
-//import com.itextpdf.layout.element.*;
-//import com.itextpdf.layout.properties.TextAlignment;
-//import com.itextpdf.layout.properties.UnitValue;
-//import com.itextpdf.layout.properties.VerticalAlignment;
-
 import com.itextpdf.text.*;
-import com.itextpdf.text.pdf.PdfDocument;
+
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
@@ -21,9 +11,8 @@ import com.project_estramipyme_backend.test.dto.ReportDTO;
 import com.project_estramipyme_backend.test.repository.ITestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.w3c.dom.Text;
 
-import java.util.Base64;
+
 import java.util.List;
 import java.io.ByteArrayOutputStream;
 
@@ -193,7 +182,6 @@ public class ReporteService {
             circuloDorado.setKeepTogether(true);
 
 
-
             PdfPCell headerCell4 = new PdfPCell(new Phrase("Sección"));
             headerCell4.setPadding(10);
             headerCell4.setBackgroundColor(BaseColor.DARK_GRAY);
@@ -221,7 +209,7 @@ public class ReporteService {
             circuloDorado.addCell(headerCell5);
             circuloDorado.addCell(headerCell6);
 
-            //lenar la tabla con datos del DTO
+            //llenar la tabla con datos del DTO
             for (ReportDTO circuloDto : resultCirculoDorado) {
                 PdfPCell nameCell = new PdfPCell(new Phrase(circuloDto.getName(), new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD)));
                 nameCell.setPadding(10);
