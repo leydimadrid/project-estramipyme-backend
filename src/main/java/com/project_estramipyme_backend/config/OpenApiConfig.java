@@ -1,5 +1,6 @@
 package com.project_estramipyme_backend.config;
 
+import io.swagger.v3.oas.models.servers.Server;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.security.SecurityScheme;
@@ -7,12 +8,26 @@ import io.swagger.v3.oas.models.Components;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.Arrays;
+
 @Configuration
 public class OpenApiConfig {
 
     @Bean
     public OpenAPI customOpenAPI() {
+
+        Server productionServer = new Server()
+                .url("https://project-estramipyme-backend-production.up.railway.app")
+                .description("Servidor de Producción - Railway");
+
+
+        Server localServer = new Server()
+                .url("http://localhost:8081")
+                .description("Servidor Local - Desarrollo");
+
+
         return new OpenAPI()
+
                 .info(new Info()
                         .title("Estramipyme API")
                         .version("1.0")
@@ -21,6 +36,7 @@ public class OpenApiConfig {
                         .addSecuritySchemes("bearer-jwt", new SecurityScheme()
                                 .type(SecurityScheme.Type.HTTP)
                                 .scheme("bearer")
-                                .bearerFormat("JWT")));
+                                .bearerFormat("JWT")))
+         .servers(Arrays.asList(productionServer, localServer)); // Agregar los servidores
     }
 }
