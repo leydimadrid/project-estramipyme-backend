@@ -64,6 +64,9 @@ spring.datasource.password=contraseña
 
 ### **Creación base de datos**
 
+**Diagrama entidad-relación**
+./images/diagrama.png
+
 Después de configurar el archivo application.properties, ejecuta el proyecto de Spring Boot. Si todo está correctamente configurado, las tablas se crearán automáticamente en la base de datos. Luego, proceda a llenar las tablas utilizando el siguiente script.
 
 En el siguiente enlace encontrarás el script SQL: https://drive.google.com/drive/folders/1LxrT0Y0ZVret1kMz8WPP9COWGnA0cVk_?usp=drive_link
