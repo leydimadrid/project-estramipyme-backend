@@ -20,7 +20,7 @@ public class OpenApiConfig {
     public OpenAPI customOpenAPI() {
 
         Server productionServer = new Server()
-                .url("https://project-estramipyme-backend-production2.up.railway.app/")
+                .url("https://project-estramipyme-backend-production-44d9.up.railway.app")
                 .description("Production Server - Railway");
 
 
