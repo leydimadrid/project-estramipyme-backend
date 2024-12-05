@@ -24,7 +24,7 @@ public class UserController {
     @Autowired
     public UserController(UserService userService) {
         this.userService = userService;
-    } //Fin inyección de dependencias
+    }
 
 
     @Operation(summary = "List users",
@@ -43,7 +43,6 @@ public class UserController {
     public UserModel saveUser(@RequestBody UserModel user) {
         return this.userService.saveUser(user);
     }
-
 
 
     @Operation(summary = "Get user by ID")

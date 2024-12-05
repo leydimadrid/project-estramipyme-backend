@@ -19,7 +19,6 @@ import java.util.Optional;
 @Tag(name = "Forms", description = "API for evaluation form management")
 @RestController
 @RequestMapping("/api/form")
-//@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST})
 public class FormController {
 
     @Autowired

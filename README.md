@@ -62,6 +62,15 @@ spring.datasource.username=usuario
 spring.datasource.password=contraseña
 ```
 
+### **Creación base de datos**
+
+**Diagrama entidad-relación**
+<img src="./images/diagrama.png">
+
+Después de configurar el archivo application.properties, ejecuta el proyecto de Spring Boot. Si todo está correctamente configurado, las tablas se crearán automáticamente en la base de datos. Luego, proceda a llenar las tablas utilizando el siguiente script.
+
+En el siguiente enlace encontrarás el script SQL: https://drive.google.com/drive/folders/1LxrT0Y0ZVret1kMz8WPP9COWGnA0cVk_?usp=drive_link
+
 ### **Instalar dependencias**
 
 ```sh
@@ -71,6 +80,10 @@ mvn clean install
 # **API Documentation**
 
 ---
+
+-Url documentación en local: http://localhost:8081/swagger-ui/index.html
+
+-Url documentación en la nube: https://project-estramipyme-backend-production-44d9.up.railway.app/swagger-ui/index.html
 
 ## **Introducción**
 
