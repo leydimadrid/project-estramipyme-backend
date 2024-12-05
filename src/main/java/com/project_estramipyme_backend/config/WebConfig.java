@@ -10,7 +10,7 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins("https://estramipyme-web.netlify.app", "http://localhost:4200", "https://project-estramipyme-backend-production2.up.railway.app")
+                .allowedOrigins("https://estramipyme-web.netlify.app", "http://localhost:4200", "https://project-estramipyme-backend-production-44d9.up.railway.app")
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("Content-Type", "Authorization", "X-Requested-With", "Accept", "Origin");
     }
